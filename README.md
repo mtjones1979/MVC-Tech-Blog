@@ -1,1 +1,1 @@
-# Model-View-Controller-Tech-Blog
+# MVC-Tech-Blog
