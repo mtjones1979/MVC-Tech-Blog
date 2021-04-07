@@ -1,0 +1,22 @@
+[
+  {
+    "title": "What is HTML?",
+    "content": "The HyperText Markup Language, or HTML(HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser.", 
+    "user_id": 1
+  },
+  {
+    "title": "What is JavaScript?",
+    "content": "It's an object-oriented computer programming language commonly used to create interactive effects within web browsers.", 
+    "user_id": 2
+  },
+  {
+    "title": "What is CSS?",
+    "content": "CSS stands for cascading styling sheet and the main purpose is to give a website an attractive look.", 
+    "user_id": 3
+  },
+  {
+    "title": "What is Handlebars?",
+    "content": "Handlebars is a simple templating language. It uses a template and an input object to generate HTML or other text formats", 
+    "user_id": 4
+    }
+]

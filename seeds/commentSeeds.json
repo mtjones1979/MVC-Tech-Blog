@@ -1,0 +1,22 @@
+[
+  {
+    "comment_text": "This is the greatest blog ever!",
+    "user_id": 1,
+    "post_id": 1
+  },
+  {
+    "comment_text": "What are you talking about - this is so wrong!",
+    "user_id": 2,
+    "post_id": 2
+  },
+  {
+    "comment_text": "Love it!!",
+    "user_id": 3,
+    "post_id": 3
+  },
+  {
+    "comment_text": "Please share more!!",
+    "user_id": 4,
+    "post_id": 4
+  }
+]
