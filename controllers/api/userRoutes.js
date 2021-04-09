@@ -1,3 +1,4 @@
+// used layout from mini project had to adjust a bit
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 
