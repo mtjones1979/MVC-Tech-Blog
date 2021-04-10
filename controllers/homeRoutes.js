@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
     })
     .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('homepage', { posts, loggedIn: req.session.loggedIn });
+        res.render('homepage', { posts, logged_in: req.session.logged_in });
     })
     .catch(err => {
         res.status(500).json(err);
@@ -28,15 +28,19 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
+    if (req.session.logged_in) {
+        res.redirect('/dashboard');
         return;
     }
     res.render('login');
 });
 
 router.get('/sign-up', (req, res) => {
-    res.render('sign-up');
+    if(req.session.logged_in){
+        res.redirect('/');
+        return;
+    }
+    res.render('sign-up'); 
 });
 
 router.get('/post/:id', (req, res) => {
@@ -64,13 +68,13 @@ router.get('/post/:id', (req, res) => {
             return;
             }
         const post = dbPostData.get({ plain: true });
-            res.render('singlePost', { post, loggedIn: req.session.loggedIn });
+            res.render('singlePost', { post, logged_in: req.session.logged_in });
     })
     .catch(err => {
         res.status(500).json(err);
     });
 });
-router.get('/postsComments', (req, res) => {
+router.get('/posts-comments', (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
@@ -95,7 +99,7 @@ router.get('/postsComments', (req, res) => {
             return;
         }
         const post = dbPostData.get({ plain: true });
-        res.render('postsComments', { post, loggedIn: req.session.loggedIn });
+        res.render('posts-comments', { post, logged_in: req.session.logged_in });
     })
     .catch(err => {
         res.status(500).json(err);

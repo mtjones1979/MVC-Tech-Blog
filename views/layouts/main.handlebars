@@ -15,7 +15,7 @@
                     <a class="link" href="/">Home</a>
                     <a class-"link" href="/dashboard">Dashboard</a>
                     {{!-- include handlebar if/else for loggedIn per examples --}}
-                    {{#if loggedIn}}
+                    {{#if logged_in}}
                     <a class ="link" href="/" id="logout">Logout</a>
                     {{else}}
                     <a class="link" href="/login">Login</a>
@@ -31,7 +31,7 @@
     </div>
     <!-- Similar to mini project main.handlebars -->
   {{#if logged_in}}
-  <script src="../js/logout.js"></script>
+  <script src="/js/logout.js"></script>
   {{/if}}
 </body>
 </html>

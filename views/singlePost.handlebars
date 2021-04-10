@@ -1,6 +1,6 @@
 {{> postInfo post}}
 
-{{#if loggedIn}}
+{{#if logged_in}}
 <div class="card">
     <h2 class="card-header"></h2>
     <form class="card-body comment-form" id="comment-form">
@@ -13,6 +13,6 @@
 {{/if}}
 
 {{> comments post.comments}}
-{{#if loggedIn}}
-<script src="../js/comment.js"></script>
+{{#if logged_in}}
+<script src="/js/comment.js"></script>
 {{/if}}
