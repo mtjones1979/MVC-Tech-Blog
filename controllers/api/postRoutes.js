@@ -6,7 +6,7 @@ const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
     Post.findAll({
-        attributes: ['id', 'title', 'content', 'create_at'],
+        attributes: ['id', 'title', 'content', 'created_at'],
         order: [
             ['created_at', 'DESC']
         ],
@@ -23,10 +23,8 @@ router.get('/', (req, res) => {
             }
         }]
     })
-    .then(dbPostData => res.json(dbPostData))
-    .catch(err => {
-    res.status(500).json(err);
-    });
+    .then(dbPostData => res.json(dbPostData.reverse()))
+    .catch(err => {res.status(500).json(err)});
 });
 
 router.get('/:id', (req, res) => {
@@ -55,10 +53,7 @@ router.get('/:id', (req, res) => {
     }
     res.json(dbPostData);
     })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+    .catch(err => {res.status(500).json(err)});
 });
 
 router.post('/', withAuth, (req, res) => {
@@ -67,10 +62,8 @@ router.post('/', withAuth, (req, res) => {
       content: req.body.content,
       user_id: req.session.user_id
     })
-  .then(dbPostData => res.json(dbPostData))
-  .catch(err => {
-    res.status(500).json(err);
-   });
+    .then(dbPostData => res.json(dbPostData))
+    .catch(err => {res.status(500).json(err)});
 });
 
 router.put('/:id', withAuth, (req, res) => {
@@ -91,9 +84,7 @@ router.put('/:id', withAuth, (req, res) => {
     }
         res.json(dbPostData);
     })
-    .catch(err => {
-        res.status(500).json(err);
-    });
+    .catch(err => {res.status(500).json(err)});
 });
 
 router.delete('/:id', withAuth, (req, res) => {
@@ -104,14 +95,12 @@ router.delete('/:id', withAuth, (req, res) => {
     })
     .then(dbPostData => {
         if (!dbPostData) {
-            res.status(404).json({ message: 'No user found with this id' });
+            res.status(404).json({ message: 'No post found with this id' });
             return;
         }
         res.json(dbPostData);
     })
-    .catch(err => {
-        res.status(500).json(err);
-    });
+    .catch(err => {res.status(500).json(err)});
 });
 
 module.exports = router;

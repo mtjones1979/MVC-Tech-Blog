@@ -44,7 +44,7 @@ router.put('/:id', withAuth, (req, res) => {
             res.status(404).json({alert: 'No comment found with this id'});
             return;
         }
-            res.json(dbCommentData);
+        res.json(dbCommentData);
     })
     .catch(err => {res.status(500).json(err)})
 });
@@ -60,9 +60,9 @@ router.delete('/:id', withAuth, (req, res) => {
             res.status(404).json({alert: 'No comment found with this id'});
             return;
         }
-            res.json(dbCommentData);
+        res.json(dbCommentData);
     })
-    .catch(err => {res.status(500).json(err)})
+    .catch(err => {res.status(500).json(err)});
 });
 module.exports = router;
 

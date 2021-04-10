@@ -70,7 +70,7 @@ router.get('/post/:id', (req, res) => {
         res.status(500).json(err);
     });
 });
-router.get('/postComments', (req, res) => {
+router.get('/postsComments', (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
@@ -95,7 +95,7 @@ router.get('/postComments', (req, res) => {
             return;
         }
         const post = dbPostData.get({ plain: true });
-        res.render('postComments', { post, loggedIn: req.session.loggedIn });
+        res.render('postsComments', { post, loggedIn: req.session.loggedIn });
     })
     .catch(err => {
         res.status(500).json(err);
