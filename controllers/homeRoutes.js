@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
         res.render('homepage', { posts, logged_in: req.session.logged_in });
     })
     .catch(err => {
-        res.status(500).json(err);
+        res.status(500).json('This didnt work!');
     });
 });
 
@@ -71,7 +71,7 @@ router.get('/post/:id', (req, res) => {
             res.render('singlePost', { post, logged_in: req.session.logged_in });
     })
     .catch(err => {
-        res.status(500).json(err);
+        res.status(500).json('This didnt work!');
     });
 });
 router.get('/posts-comments', (req, res) => {
@@ -102,7 +102,7 @@ router.get('/posts-comments', (req, res) => {
         res.render('posts-comments', { post, logged_in: req.session.logged_in });
     })
     .catch(err => {
-        res.status(500).json(err);
+        res.status(500).json('This didnt work!');
     });
 });
 

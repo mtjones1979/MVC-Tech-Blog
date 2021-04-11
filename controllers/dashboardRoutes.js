@@ -27,7 +27,7 @@ router.get('/', withAuth, (req, res) => {
         const posts = dbPostData.map(post => post.get({ plain: true}));
         res.render('dashboard', { posts, logged_in: true });
     })
-    .catch(err => {res.status(500).json(err);
+    .catch(err => {res.status(500).json('This didnt work!');
     });
 });
 
@@ -58,7 +58,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
         const post = dbPostData.get({ plain: true});
         res.render('editPost', { post, logged_in: true });
     })
-    .catch(err => {res.status(500).json(err)});
+    .catch(err => {res.status(500).json('This didnt work!')});
 })
 
 router.get('/new', (req,res) => {

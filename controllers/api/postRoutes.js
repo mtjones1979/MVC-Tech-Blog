@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
         }]
     })
     .then(dbPostData => res.json(dbPostData.reverse()))
-    .catch(err => {res.status(500).json(err)});
+    .catch(err => {res.status(500).json('This didnt work!')});
 });
 
 router.get('/:id', (req, res) => {
@@ -53,7 +53,7 @@ router.get('/:id', (req, res) => {
     }
     res.json(dbPostData);
     })
-    .catch(err => {res.status(500).json(err)});
+    .catch(err => {res.status(500).json('This didnt work!')});
 });
 
 router.post('/', withAuth, (req, res) => {
@@ -100,7 +100,7 @@ router.delete('/:id', withAuth, (req, res) => {
         }
         res.json(dbPostData);
     })
-    .catch(err => {res.status(500).json(err)});
+    .catch(err => {res.status(500).json('This didnt work!')});
 });
 
 module.exports = router;
