@@ -10,4 +10,4 @@ const logout = async () => {
       alert('You are not logged out');
     }
   };
-  document.querySelector('#logout').addEventListener('submit', logout);
+  document.querySelector('#logout').addEventListener('click', logout);
