@@ -1,8 +1,8 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
   
-    const title = document.querySelector('input[name="post-title"]').value.trim();
-    const content = document.querySelector('input[name="post-content"]').value.trim();
+    const title = document.querySelector('#post-title').value.trim();
+    const content = document.querySelector('#post-content').value.trim();
     const token = localStorage.getItem('token');
 
    await fetch(`/api/posts`, {
@@ -15,8 +15,8 @@ const newFormHandler = async (event) => {
       });
   
     document.location.replace('/dashboard');
-    };
-  document.querySelector('.new-post-form').addEventListener('click', newFormHandler);
   
+  document.querySelector('#new-post-form').addEventListener('submit', newFormHandler);
   
+};
   

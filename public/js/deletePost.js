@@ -14,5 +14,6 @@ const delButtonHandler = async (event) => {
         alert('Failed to delete post');
       }
     }
-  };
+  
   document.querySelector('#edit-post-form').addEventListener('submit', delButtonHandler);
+};

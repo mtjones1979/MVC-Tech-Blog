@@ -18,5 +18,6 @@ const commentFormHandler = async (event) => {
             document.querySelector('#comment-form').style.display = "block";
         }
     }
-}
+
 document.querySelector('#comment-form').addEventListener('submit', commentFormHandler);
+};
