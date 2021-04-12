@@ -7,18 +7,18 @@ const editFormHandler = async (event) => {
     if (event.target.hasAttribute('post-id')) {
         const id = event.target.getAttribute('post-id');
 
-        const response = await fetch(`/api/posts/${id}`, {
+       await fetch(`/api/posts/${id}`, {
             method: 'PUT',
             body: JSON.stringify({ title, content }),
             headers: {'Content-Type': 'application/json'},
         });
   
-        if (response.ok) {
-            document.location.replace('/dashboard');
-        } else {
+        // if (response.ok) {
+            document.location.replace('/');
+        // } else {
             alert('Failed to edit the post');
-        }
+        // }
     }
-
-    document.querySelector('#edit-post-form').addEventListener('submit', editFormHandler);
-};    
+};
+    document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
+   

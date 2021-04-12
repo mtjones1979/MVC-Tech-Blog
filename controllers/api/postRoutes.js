@@ -56,7 +56,7 @@ router.get('/:id', (req, res) => {
     .catch(err => {res.status(500).json('This didnt work!')});
 });
 
-router.post('/', (req, res) => {
+router.post('/new', withAuth, (req, res) => {
     console.log(res.session.user_id);
     console.log(req.body);
     Post.create({
@@ -68,7 +68,7 @@ router.post('/', (req, res) => {
     .catch(err => {res.status(500).json(err)});
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Post.update(
     {
         title: req.body.title,

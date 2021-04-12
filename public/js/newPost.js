@@ -5,7 +5,7 @@ const newFormHandler = async (event) => {
     const content = document.querySelector('#post-content').value.trim();
     const token = localStorage.getItem('token');
 
-   await fetch(`/api/posts`, {
+   const response = await fetch(`/api/posts`, {
         method: 'POST',
         body: JSON.stringify({ title, content }),
         headers: {
@@ -14,9 +14,13 @@ const newFormHandler = async (event) => {
         },
       });
   
+    if (response.ok) {
     document.location.replace('/dashboard');
-  
-  document.querySelector('#new-post-form').addEventListener('submit', newFormHandler);
-  
+    } else {
+      alert('This did not post')
+    }
 };
+  document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+  
+
   
