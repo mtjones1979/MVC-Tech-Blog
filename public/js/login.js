@@ -14,10 +14,8 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        console.log('done!');
-       document.location.replace('/dashboard');
+        document.location.replace('/dashboard');
       } else {
-        console.log(username)
         alert('Failed to log-in');
       }
     }

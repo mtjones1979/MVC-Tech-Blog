@@ -1,11 +1,12 @@
 <div class="card">
-    <h2 class"card-header">Edit Post</h2>
+    <h2 class="card-header">Edit Post</h2>
     <form class="card-body edit-post-form">
-        <label for="post-title" class="form-label">Title:</label>
-        <input name="post-title" type="text" value="{{post.title}}" class="form-input"/>
 
-        <label for="post-content" class="form-label">Content:</label>
-        <input name="post-content" type="text" value="{{post.content}}" class="form-input"/>
+        <label for="post-title" class="form-label post-title">Title:</label>
+        <input name="post-title" type="text" value="{{post.title}}" class="form-input post-title"/>
+
+        <label for="post-content" class="form-label post-content">Content:</label>
+        <input name="post-content" type="text" value="{{post.content}}" class="form-input post-content"/>
     </form>
 
     <button type="submit" class="btn">Update Post</button>
@@ -14,4 +15,4 @@
 </div>
 
 <script src="/js/editPost.js"></script>
-<script src="/js/deletePost.js"></script>
+{{!-- <script src="/js/deletePost.js"></script> --}}
