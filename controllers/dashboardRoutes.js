@@ -57,21 +57,6 @@ router.get('/edit/:id', (req, res) => {
     .catch(err => {res.status(500).json('This didnt work!')});
 })
 
-// router.get('/new', (req,res) => {
-//     res.render('newPost');
-// });
-router.post('/new', withAuth, (req, res) => {
-    console.log(res.session.user_id);
-    console.log(req.body);
-    Post.create({
-      title: req.body.title,
-      content: req.body.content,
-      user_id: req.session.user_id
-    })
-    .then(dbPostData => res.json(dbPostData))
-    .catch(err => {res.status(500).json(err)});
-});
-
 module.exports = router;
 
 

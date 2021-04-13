@@ -9,10 +9,8 @@ const newFormHandler = async (event) => {
      
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          // 'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({ title, content }),
+          'Content-Type': 'application/json'},
+        body: JSON.stringify({ title, content, }),
       });
       console.log(title, content);
     if (response.ok) {

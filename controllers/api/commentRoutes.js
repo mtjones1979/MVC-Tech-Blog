@@ -2,11 +2,20 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', (req, res) => {
-    Comment.findAll({})
-        .then(dbCommentData => res.json(dbCommentData))
-        .catch(err => {res.status(500).json('This didnt work!')})
-});
+router.get('/', async (req, res) => {
+    try{
+        const commentData = Comment.findAll({ 
+            attributes: ['comment_text'],
+            // include: [{
+            //     model: User,
+            //     attributes: ['username']
+            // }],
+        });
+        res.status(200).json(commentData);
+        } catch(err) {
+            res.status(500).json(err);
+        }
+    });
 
 router.get('/:id', (req, res) => {
     Comment.findAll({
@@ -18,15 +27,16 @@ router.get('/:id', (req, res) => {
     .catch(err => {res.status(500).json(err)})
 });
 
-router.post('/', withAuth, (req, res) => {
-    if (req.session) {
-        Comment.create({
-            comment_text: req.body.comment_text,
-            post_id: req.body.post_id,
-            user_id: req.session.user_id,
-        })
-        .then(dbCommentData => res.json(dbCommentData))
-        .catch(err => {res.status(500).json('This didnt work!')})
+router.post('/', async (req, res) => {
+    try{
+        const commentData = await Comment.create({
+        comment_text: req.body.comment_text,
+        // post_id: req.body.post_id,
+        user_id: req.session.user_id,
+    });
+    res.status(200).json(commentData);
+    }
+    catch (err) { {res.status(500).json('This didnt work!')}
     }
 });
 
