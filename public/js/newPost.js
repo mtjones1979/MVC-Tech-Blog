@@ -5,7 +5,7 @@ const newFormHandler = async (event) => {
     const content = document.querySelector(".post-content").value.trim();
     // const token = localStorage.getItem('token');
 
-   const response = await fetch('/api/posts/new', {
+   const response = await fetch(`/api/posts`, {
      
         method: 'POST',
         headers: {

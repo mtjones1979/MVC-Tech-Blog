@@ -27,6 +27,11 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/posts', (req,res) => {
+    if(req.session.logged_in){
+        res.render('newPost');
+    }
+})
 router.get('/login', (req, res) => {
     
     if (req.session.logged_in) {
@@ -45,7 +50,7 @@ router.get('/sign-up', (req, res) => {
     res.render('sign-up'); 
 });
 
-router.get('/post/:id', (req, res) => {
+router.get('/posts/:id', (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
@@ -77,7 +82,7 @@ router.get('/post/:id', (req, res) => {
         res.status(500).json('This didnt work!');
     });
 });
-router.get('/posts-comments', (req, res) => {
+router.get('/comments', (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id

@@ -4,28 +4,28 @@ const { User, Post, Comment } = require('../../models');
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
-// router.get('/', (req, res) => {
-//     Post.findAll({
-//         attributes: ['id', 'title', 'content', 'created_at'],
-//         order: [
-//             ['created_at', 'DESC']
-//         ],
-//         include: [{
-//             model: User,
-//             attributes:['username']
-//         },
-//         {
-//             model: Comment,
-//             attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-//             include: {
-//                 model: User,
-//                 attributes: ['username']
-//             }
-//         }]
-//     })
-//     .then(dbPostData => res.json(dbPostData.reverse()))
-//     .catch(err => {res.status(500).json('This didnt work!')});
-// });
+router.get('/', (req, res) => {
+    Post.findAll({
+        attributes: ['id', 'title', 'content', 'created_at'],
+        order: [
+            ['created_at', 'DESC']
+        ],
+        include: [{
+            model: User,
+            attributes:['username']
+        },
+        {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            include: {
+                model: User,
+                attributes: ['username']
+            }
+        }]
+    })
+    .then(dbPostData => res.json(dbPostData.reverse()))
+    .catch(err => {res.status(500).json('This didnt work!')});
+});
 
 // router.get('/:id', (req, res) => {
 //     Post.findOne({
@@ -55,21 +55,33 @@ const withAuth = require('../../utils/auth');
 //     })
 //     .catch(err => {res.status(500).json('This didnt work!')});
 // });
-router.get('/new', (req,res) => {
-    res.render('newPost');
-});
-router.post('/new', (req, res) => {
-    console.log(res.session.user_id);
-    console.log(req.body);
-    Post.create({
-      title: req.body.title,
-      content: req.body.content,
-      user_id: req.session.user_id
-    })
-    .then(dbPostData => res.json(dbPostData))
-    .catch(err => {res.status(500).json('This did not work')});
-});
+// router.get('/', (req,res) => {
+//     res.render('newPost');
+// });
+// router.post('/', (req, res) => {
+//     console.log(res.session.user_id);
+//     console.log(req.body);
+//     Post.create({
+//       title: req.body.title,
+//       content: req.body.content,
+//       user_id: req.session.user_id
+//     })
+//     .then(dbPostData => res.json(dbPostData))
+//     .catch(err => {res.status(500).json('This did not work')});
+// });
 
+router.post('/', async (req,res) => {
+    try{
+        const postData = await Post.create({
+            title: req.body.title,
+            content: req.body.content,
+            user_id: req.session.user_id,
+        });
+        res.status(200).json(postData);
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
 router.put('/:id', withAuth, (req, res) => {
     Post.update(
     {
